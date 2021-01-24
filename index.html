@@ -31,16 +31,19 @@
                   :disabled="isFirstStep"
                   @click="prev"
                   v-show="isLastStep !== true"
-          >Назад</button>
+                  >Назад
+          </button>
           <button class="btn primary"
                   @click="nextOrFinish"
                   v-text="isLastStep ? 'Завершить' : 'Вперед'"
                   v-show="isLastStep !== true"
-                  ></button>
+                  >
+          </button>
           <button class="btn"
                   @click="reset"
                   v-show="isLastStep"
-                  >Начать заново</button>
+                  >Начать заново
+          </button>
         </div>
       </div>
     </div>
