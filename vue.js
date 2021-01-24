@@ -41,6 +41,9 @@ const App = {
     }
   },
   computed: {
+    firstText() {
+      return this.steps[0].text
+    },
     activeStep() {
       return this.activeIndex
     },
