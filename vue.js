@@ -17,13 +17,9 @@ const App = {
     }
   },
   methods: {
-    renderText() {
-      this.activeText = this.steps[this.activeIndex].text
-    },
     prev() {
       if(this.activeIndex > 0) {
         this.activeIndex--
-        this.renderText()
       }
     },
     reset() {
@@ -32,26 +28,21 @@ const App = {
     nextOrFinish() {
       if(this.activeIndex < this.steps.length - 1) {
         this.activeIndex++
-        this.renderText()
       }
     },
     setActive(idx) {
       this.activeIndex = idx
-      this.renderText()
     }
   },
   computed: {
-    firstText() {
-      return this.steps[0].text
-    },
-    activeStep() {
-      return this.activeIndex
-    },
     isFirstStep() {
       return this.activeIndex === 0
     },
     isLastStep() {
       return this.activeIndex === this.steps.length - 1
+    },
+    currentStep() {
+      return this.steps[this.activeIndex]
     }
   }
 }

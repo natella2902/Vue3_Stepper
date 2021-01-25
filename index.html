@@ -13,15 +13,15 @@
       <h1>План по изучению Vue.js</h1>
       <div class="steps">
         <div class="steps-content"
-             v-text="isFirstStep ? firstText : activeText"
+             v-text="currentStep.text"
         >
         </div>
         <ul class="steps-list">
           <li v-for="(step, idx) in steps"
               :class="{
                'steps-item': true,
-               'active': activeStep === idx,
-               'done': activeStep > idx
+               'active': activeIndex === idx,
+               'done': activeIndex > idx
               }"
               @click="setActive(idx)">
             <span>{{ idx + 1 }}</span> {{ step.title }} </li>
@@ -30,18 +30,18 @@
           <button class="btn"
                   :disabled="isFirstStep"
                   @click="prev"
-                  v-show="isLastStep !== true"
+                  v-if="!isLastStep"
                   >Назад
           </button>
           <button class="btn primary"
                   @click="nextOrFinish"
                   v-text="isLastStep ? 'Завершить' : 'Вперед'"
-                  v-show="isLastStep !== true"
+                  v-if="!isLastStep"
                   >
           </button>
           <button class="btn"
                   @click="reset"
-                  v-show="isLastStep"
+                  v-else
                   >Начать заново
           </button>
         </div>
